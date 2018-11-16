@@ -5,3 +5,19 @@ spring:
     username: zidane
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource # 数据源类型
+    initialSize: 5 # 初始化大小
+    minIdle: 5 # 最小空闲
+    maxActive: 20 # 最大空闲
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000 # 间隔多久才进行一次检测, 检测需要关闭的空闲连接, 单位毫秒
+    minEvictableIdleTimeMills: 300000 # 一个连接在池中最小生成时间, 毫秒
+    validationQuery: SELECT 1 FROM DUAL # 检测有效的查询语句
+    testWhileIdel: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true # PS语句缓存
+    maxPoolPreparedStatementPerConnectionSize: 20 #每个连接上PSCache大小
+    filter: stat,wall,log4j # 配置监控统计拦截过滤器， 去掉后监控界面的SQL无法统计, ‘wall'用于防火墙
+#    connectionProperties:
+
