@@ -1,10 +1,11 @@
 # mysql连接信息
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/test
-    username: zidane
+    url: jdbc:mysql://localhost:3306/test?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: test
     password: 123456
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    platform: mysql
     type: com.alibaba.druid.pool.DruidDataSource # 数据源类型
     initialSize: 5 # 初始化大小
     minIdle: 5 # 最小空闲
@@ -19,5 +20,11 @@ spring:
     poolPreparedStatements: true # PS语句缓存
     maxPoolPreparedStatementPerConnectionSize: 20 #每个连接上PSCache大小
     filter: stat,wall,log4j # 配置监控统计拦截过滤器， 去掉后监控界面的SQL无法统计, ‘wall'用于防火墙
-#    connectionProperties:
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000 # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+    useGlobalDataSourceStat: true # 合并多个DruidDtaSource的监控数据
+
+
+
+
+
 
